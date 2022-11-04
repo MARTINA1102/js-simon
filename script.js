@@ -8,10 +8,18 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 let eleRandom= document.querySelector('.numeri-casuali');
 //let eleUtente= document.querySelector('.numeri-utente');
 
-eleRandom.innerHTML=generateNumeriRandom(5,0,100);
+eleRandom.innerHTML=dNone(generateNumeriRandom(5,0,100));
 //eleUtente.innerHTML=generateNumUtente(5);
 
 
+
+setTimeout (dNone,3000);
+
+function dNone(elemento){
+    console.log('ciao')
+    elemento.classList.add('none');
+
+}
 
 /*function generateNumUtente(n){
     let arrUtente=[];

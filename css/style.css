@@ -4,3 +4,20 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
+body{
+    background-color: blanchedalmond;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.numeri-casuali{
+    background-color: brown;
+    color: yellow;
+    font-size: 3rem;
+}
+.none{
+    display: none;
+}
