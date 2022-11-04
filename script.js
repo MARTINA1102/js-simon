@@ -6,30 +6,28 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 
 
 let eleRandom= document.querySelector('.numeri-casuali');
-//let eleUtente= document.querySelector('.numeri-utente');
+let eleUtente= document.querySelector('.numeri-utente');
 
 eleRandom.innerHTML=generateNumeriRandom(5,0,100);
-//eleUtente.innerHTML=generateNumUtente(5);
-
-
-
 setTimeout (dNone,3000);
-
-
 function dNone(elemento){
     console.log('ciao')
     eleRandom.classList.add('none');
-    generateNumUtente(6);
+    eleUtente.innerHTML=generateNumUtente(6);
 
 }
+
 
 function generateNumUtente(n){
     let arrUtente=[];
     for (i=0; i<n;i++){
         numeroUtente=prompt('dammi un numero');
         arrUtente.push(numeroUtente);
-        return arrUtente;
-    }
+        i++;
+        console.log(arrUtente)
+    }    
+    return arrUtente;
+    
 }
 
 
