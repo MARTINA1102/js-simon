@@ -7,59 +7,53 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 
 let eleRandom= document.querySelector('.numeri-casuali');
 let eleUtente= document.querySelector('.numeri-utente');
+let eleOk = document.querySelector ('.risultato-finale-ok')
+let eleNo = document.querySelector ('.risultato-finale-no')
 
-eleRandom.innerHTML=generateNumeriRandom(5,0,100);
-setTimeout (dNone,3000);
-function dNone(elemento){
-    console.log('ciao')
-    eleRandom.classList.add('none');
-    eleUtente.innerHTML=generateNumUtente(6);
 
+
+
+let arrRandoms = [];
+// ciclo che dice per quanti numeri viene ripetuto
+for (var i = 0; i < 5 ; i++){
+    //creazione dei numeri random
+    let result = true;
+    let numberRandom = Math.floor(Math.random()*100)+1;
+    for (var j = 0; j < i; j++){
+        if (arrRandoms[j] == numberRandom)result =false;
+    }
+    if (result){
+        arrRandoms[i] = numberRandom;
+    } else {
+        i--;
+    }
 }
+console.log('numeri casuali:' , arrRandoms)
+eleRandom.innerHTML=arrRandoms;
+setTimeout (dNone,3000);
 
-
-function generateNumUtente(n){
-    let arrUtente=[];
-    for (i=0; i<n;i++){
-        numeroUtente=prompt('dammi un numero');
-        arrUtente.push(numeroUtente);
-        i++;
+function dNone(){
+    console.log('ciao')
+    eleRandom.innerHTML='';    
+}
+setTimeout(generateNumUtente, 4000)
+let arrUtente=[];
+function generateNumUtente(){
+    
+    for (let i=0; i<5;i++){
+        let numeroUtente=parseInt(prompt('dammi un numero'));
+        arrUtente.push(numeroUtente);        
         console.log(arrUtente)
     }    
-    return arrUtente;
-    
-}
-
-
-
-function generateNumeriRandom(n,min,max){
-    const arrRandoms=[];
-    for (let i=0; i<n; i++){
-        do {
-            randomNumber=getIntegerRandom(min,max);
-        }while(arrRandoms.includes(randomNumber))
-        arrRandoms.push(randomNumber)
+    var isEqual = arrUtente.toString() === arrRandoms.toString();
+    console.log(isEqual);
+    if (isEqual === true) {
+        eleOk.innerHTML = 'CORRETTO hai fatto 50 punti'
+    } else {
+        eleNo.innerHTML = 'SBAGLIATO !!!'
     }
-    return arrRandoms;
     
 }
 
-function getIntegerRandom(min,max){
-    return Math.floor(Math.random()*(max-min+1))+min;
-}
 
-/*function numPrompt(num1,num2,num3,num4,num5){
-    const arrUtente=[];
-    num1= parseInt(prompt('dammi un numero'));
-    num2= parseInt(prompt('dammi un numero'));
-    num3= parseInt(prompt('dammi un numero'));
-    num4= parseInt(prompt('dammi un numero'));
-    num5= parseInt(prompt('dammi un numero'));
-    arrUtente.push(num1);
-    arrUtente.push(num2);
-    arrUtente.push(num3);
-    arrUtente.push(num4);
-    arrUtente.push(num5);
-    return arrUtente;
-
-}*/
+   
